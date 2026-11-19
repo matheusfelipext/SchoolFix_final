@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="SchoolFix — sistema de gestão de ocorrências escolares" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SchoolFix — Gestor · Nova Ocorrência</title>
+    <link rel="stylesheet" href="../recursos/icones/tabler-icons.min.css" />
+    <link rel="stylesheet" href="../css/fontes.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="../js/tema.js"></script>
+  </head>
+  <body>
+    <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+    <!-- Barra de acessibilidade (sem JavaScript: checkboxes + CSS) -->
+    <input type="checkbox" id="acess-fonte" class="acess-check" />
+    <input type="checkbox" id="acess-contraste" class="acess-check" />
+    <input type="checkbox" id="acess-espaco" class="acess-check" />
+    <input type="checkbox" id="acess-voz" class="acess-check" />
+    <details class="acess-menu">
+      <summary aria-label="Opções de acessibilidade" title="Acessibilidade"><i class="ti ti-accessible" aria-hidden="true"></i></summary>
+      <div class="acess-opcoes" role="group" aria-label="Ajustes de leitura">
+        <label for="acess-fonte"><i class="ti ti-text-increase" aria-hidden="true"></i> Letras maiores</label>
+        <label for="acess-contraste"><i class="ti ti-contrast" aria-hidden="true"></i> Alto contraste</label>
+        <label for="acess-espaco"><i class="ti ti-line-height" aria-hidden="true"></i> Mais espaço entre linhas</label>
+        <label for="acess-voz"><i class="ti ti-volume" aria-hidden="true"></i> Ler em voz alta (mouse/teclado)</label>
+        <button type="button" class="acess-ler-tudo" id="acess-ler-pagina"><i class="ti ti-player-play" aria-hidden="true"></i> Ler a página inteira</button>
+      </div>
+    </details>
+
+    <input type="checkbox" id="menu-aberto" class="menu-toggle-check" aria-label="Abrir menu" />
+    <div class="app">
+      <aside class="sidebar" aria-label="Barra lateral">
+        <div class="logo-wrap">
+          <img src="../imagens/logo.png" class="logo-img" alt="Logo SchoolFix" />
+          <span class="brand-name">SchoolFix</span>
+        </div>
+        <nav class="nav-items" aria-label="Menu principal">
+          <a class="nav-item" href="index.html"><i class="ti ti-home" aria-hidden="true"></i>Início</a>
+          <a class="nav-item" href="reclamacoes.html"><i class="ti ti-list" aria-hidden="true"></i>Todas Reclamações</a>
+          <a class="nav-item" href="nova-ocorrencia.html"><i class="ti ti-plus" aria-hidden="true"></i>Nova Ocorrência</a>
+          <a class="nav-item" href="chat.html"><i class="ti ti-message-2" aria-hidden="true"></i>Chat Geral</a>
+          <a class="nav-item" href="mensagens.html"><i class="ti ti-mail" aria-hidden="true"></i>Mensagens Diretas</a>
+          <a class="nav-item" href="relatorios.html"><i class="ti ti-chart-bar" aria-hidden="true"></i>Relatórios</a>
+          <a class="nav-item" href="configuracoes.html"><i class="ti ti-settings" aria-hidden="true"></i>Configuração</a>
+        </nav>
+      </aside>
+
+      <div class="main">
+        <header class="header">
+          <label for="menu-aberto" class="menu-toggle" title="Menu">&#9776;</label>
+          <div class="header-school">
+            <i class="ti ti-school" aria-hidden="true"></i> Centro Universitário Salesiano de São
+            Paulo
+          </div>
+          <div class="header-right">
+            <button class="icon-btn" title="Notificações">
+              <i class="ti ti-bell" aria-hidden="true"></i>
+            </button>
+            <div class="header-divider"></div>
+            <div class="user-profile">
+              <div class="avatar" id="user-avatar">M</div>
+              <div class="user-meta">
+                <p class="name" id="user-nome">Carregando...</p>
+                <p class="role" id="user-role">—</p>
+              </div>
+              <button
+                class="icon-btn"
+                title="Sair"
+                onclick="logout()"
+                style="margin-left: 6px"
+              >
+                <i class="ti ti-logout" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <main class="content-area" id="conteudo">
+          <h1 class="visualmente-oculto">Nova Ocorrência</h1>
+          <div class="card" style="max-width: 680px; margin: 0 auto">
+            <div
+              style="
+                margin-bottom: 24px;
+                border-bottom: 1px solid #f1f5f9;
+                padding-bottom: 16px;
+              "
+            >
+              <h2
+                style="font-size: 1.4rem; color: var(--navy); margin: 0 0 6px"
+              >
+                Cadastrar Nova Ocorrência
+              </h2>
+              <p
+                style="
+                  color: var(--text-secondary);
+                  margin: 0;
+                  font-size: 13.5px;
+                "
+              >
+                Preencha os detalhes do problema para registrar o chamado no
+                sistema.
+              </p>
+            </div>
+
+            <form id="form-nova-ocorrencia">
+              <div class="form-group">
+                <label class="form-label" for="oc-titulo">
+                  <i class="ti ti-edit" aria-hidden="true"></i> Título / Problema
+                </label>
+                <input
+                  type="text"
+                  id="oc-titulo"
+                  class="form-control"
+                  placeholder="Ex: Ar-condicionado com defeito na Sala 04"
+                  required
+                />
+              </div>
+
+              <!-- Grid de 3 Colunas: Categoria, Prioridade e Status -->
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: 1fr 1fr 1fr;
+                  gap: 16px;
+                  margin-bottom: 16px;
+                "
+              >
+                <div class="form-group">
+                  <label
+                    for="categoria"
+                    style="display: block; margin-bottom: 6px; font-weight: 500"
+                    >Categoria</label
+                  >
+                  <select
+                    id="categoria"
+                    class="form-control"
+                    style="width: 100%"
+                  >
+                    <option value="Infraestrutura">Infraestrutura</option>
+                    <option value="Limpeza">Limpeza</option>
+                    <option value="Convivência">Convivência</option>
+                    <option value="Pedagógico">Pedagógico</option>
+                    <option value="Alimentação">Alimentação</option>
+                    <option value="Outros">Outros</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label
+                    for="prioridade"
+                    style="display: block; margin-bottom: 6px; font-weight: 500"
+                    >Prioridade</label
+                  >
+                  <select
+                    id="prioridade"
+                    class="form-control"
+                    style="width: 100%"
+                  >
+                    <option value="Baixa">Baixa</option>
+                    <option value="Média">Média</option>
+                    <option value="Alta">Alta</option>
+                    <option value="Urgente">Urgente 🚨</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="oc-descricao">
+                  <i class="ti ti-file-text" aria-hidden="true"></i> Descrição do Ocorrido
+                </label>
+                <textarea
+                  id="oc-descricao"
+                  class="form-control"
+                  placeholder="Descreva detalhadamente o problema encontrado..."
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">
+                  <i class="ti ti-paperclip" aria-hidden="true"></i> Anexo (Foto do Problema)
+                </label>
+                <label class="file-upload-box" for="oc-imagem">
+                  <i class="ti ti-cloud-upload" aria-hidden="true"></i>
+                  <p id="file-label">
+                    <strong>Clique para selecionar uma imagem</strong> ou
+                    arraste o arquivo aqui
+                  </p>
+                  <input
+                    type="file"
+                    id="oc-imagem"
+                    accept="image/*"
+                  />
+                </label>
+              </div>
+
+              <button type="submit" class="btn-submit">
+                <i class="ti ti-send" aria-hidden="true"></i> Enviar Ocorrência
+              </button>
+            </form>
+          </div>
+        </main>
+
+        <footer class="footer" role="contentinfo">
+          © 2026 SchoolFix — Sistema de Gestão Escolar. Todos os direitos
+          reservados.
+        </footer>
+      </div>
+    </div>
+    <label for="menu-aberto" class="menu-fundo" aria-hidden="true"></label>
+
+    <script src="../js/dados.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/acessibilidade.js"></script>
+    <script src="../js/nova-ocorrencia.js"></script>
+
+    <!-- VLibras (tradutor para Libras do governo federal) — precisa de internet; sem ela, fica invisível -->
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js" onerror="document.querySelector('[vw]')?.remove()"></script>
+    <script>if (window.VLibras) new window.VLibras.Widget("https://vlibras.gov.br/app");</script>
+  </body>
+</html>

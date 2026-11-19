@@ -1,0 +1,145 @@
+/* ============================================================
+   Variáveis (cores, raios, sombras) e paleta do tema escuro
+   ============================================================ */
+
+/* ============================================
+   SchoolFix — Design Tokens & Sistema de Temas
+   ============================================ */
+
+/* Modo Claro (Padrão) */
+:root {
+  /* Cores Principais */
+  --navy: #1b1e64;
+  --navy-dark: #131650;
+  --navy-light-bg: #e7e8f5;
+  --header-bg: #1b1e64;
+  --header-text: #ffffff;
+  
+  --primary: #0f5c4a;
+  --primary-dark: #0b4438;
+  --primary-light-bg: #eaf6f2;
+  
+  --bg-page: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-public: #f4efe6;
+  --bg-hover: #f1f5f9;
+  
+  --border: #e2e8f0;
+  --border-input: #cbd5e1;
+  
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-on-navy: #ffffff;
+  --text-on-navy-muted: #c4c6e8;
+
+  /* Modulo de Chat */
+  --chat-bg: #ffffff;
+  --chat-card-bg: #f8fafc;
+  --chat-border: #e2e8f0;
+  --chat-text-name: #0f172a;
+  --chat-text-body: #334155;
+  --chat-sidebar-bg: #f1f5f9;
+
+  /* Status */
+  --danger-bg: #fee2e2;
+  --danger: #dc2626;
+  --info-bg: #dbeafe;
+  --info: #2563eb;
+  --warning-bg: #fef3c7;
+  --warning: #d97706;
+  --success-bg: #dcfce7;
+  --success: #16a34a;
+
+  /* Cargos / Perfis */
+  --role-diretoria-bg: #e7e8f5;
+  --role-diretoria: #1b1e64;
+  --role-coordenador-bg: #f3e8ff;
+  --role-coordenador: #7e22ce;
+  --role-gestor-bg: #e2e8f0;
+  --role-gestor: #334155;
+  --role-professor-bg: #cffafe;
+  --role-professor: #155e75;
+  --role-aluno-bg: #f1f5f9;
+  --role-aluno: #475569;
+  --role-responsavel-bg: #f5e9df;
+  --role-responsavel: #78350f;
+  --role-inspetor-bg: #fdf2f8;
+  --role-inspetor: #9d174d;
+
+  /* Geometria */
+  --radius: 8px;
+  --radius-lg: 12px;
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.07);
+}
+
+/* Modo Escuro */
+html.dark-theme,
+body.dark-theme,
+:root.dark-theme,
+body.dark-mode,
+[data-theme="dark"] {
+  color-scheme: dark;
+  
+  --navy: #a5b4fc;
+  --navy-dark: #0f172a;
+  --navy-light-bg: rgba(99, 102, 241, 0.15);
+  --header-bg: #0f172a;
+  --header-text: #f8fafc;
+  
+  --primary: #10b981;
+  --primary-dark: #34d399;
+  --primary-light-bg: rgba(16, 185, 129, 0.15);
+  
+  --bg-page: #0b0f17;
+  --bg-card: #151e2e;
+  --bg-public: #0b0f17;
+  --bg-hover: #1e293b;
+  
+  --border: #273549;
+  --border-input: #334155;
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-on-navy: #f8fafc;
+  --text-on-navy-muted: #94a3b8;
+
+  /* Modulo de Chat (Modo Escuro) */
+  --chat-bg: #0f172a;
+  --chat-card-bg: #1e293b;
+  --chat-border: #334155;
+  --chat-text-name: #38bdf8;
+  --chat-text-body: #e2e8f0;
+  --chat-sidebar-bg: #1e293b;
+
+  /* Status (Modo Escuro) */
+  --danger-bg: rgba(239, 68, 68, 0.2);
+  --danger: #f87171;
+  --info-bg: rgba(59, 130, 246, 0.2);
+  --info: #60a5fa;
+  --warning-bg: rgba(245, 158, 11, 0.2);
+  --warning: #fbbf24;
+  --success-bg: rgba(16, 185, 129, 0.2);
+  --success: #34d399;
+
+  /* Cargos (Modo Escuro) */
+  --role-diretoria-bg: rgba(165, 180, 252, 0.18);
+  --role-diretoria: #c7d2fe;
+  --role-coordenador-bg: rgba(192, 132, 252, 0.18);
+  --role-coordenador: #e9d5ff;
+  --role-gestor-bg: rgba(148, 163, 184, 0.18);
+  --role-gestor: #f1f5f9;
+  --role-professor-bg: rgba(45, 212, 191, 0.18);
+  --role-professor: #99f6e4;
+  --role-aluno-bg: rgba(148, 163, 184, 0.15);
+  --role-aluno: #cbd5e1;
+  --role-responsavel-bg: rgba(251, 191, 36, 0.18);
+  --role-responsavel: #fef08a;
+  --role-inspetor-bg: rgba(244, 114, 182, 0.18);
+  --role-inspetor: #fbcfe8;
+
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+}

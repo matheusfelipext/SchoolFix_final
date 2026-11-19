@@ -1,0 +1,18 @@
+/* ============================================================
+   style.css — ponto de entrada do CSS do SchoolFix.
+   Não tem regras: só carrega os arquivos, um por função, NA ORDEM certa
+   (variáveis primeiro, responsivo por último para poder sobrescrever).
+   Para mexer num visual, abra o arquivo da função correspondente.
+   ============================================================ */
+@import url("variaveis.css");     /* cores, raios, sombras + paleta do modo escuro        */
+@import url("base.css");          /* reset, tipografia, utilitários                        */
+@import url("layout.css");        /* estrutura da página, menu lateral, cabeçalho, rodapé  */
+@import url("componentes.css");   /* cartões, KPIs, botões, etiquetas, avisos               */
+@import url("tabelas.css");       /* tabelas, badges de status, ações                      */
+@import url("formularios.css");   /* formulários, configurações, interruptores             */
+@import url("chat.css");          /* chat geral e mensagens diretas                        */
+@import url("relatorios.css");    /* gráficos e dashboard                                  */
+@import url("login.css");         /* tela de login                                         */
+@import url("perfil.css");        /* perfil do aluno / professor                           */
+@import url("tema-escuro.css");   /* ajustes do modo escuro                                */
+@import url("responsivo.css");    /* notebook / tablet / celular / impressão               */

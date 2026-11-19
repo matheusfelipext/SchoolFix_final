@@ -1,0 +1,155 @@
+/* ============================================================
+   Responsividade — 3 faixas: desktop (padrão), notebook, celular
+   ============================================================ */
+
+
+/* Como ler este arquivo
+   - Sem @media  = DESKTOP (monitor, acima de 1366px): regras normais nos outros arquivos.
+   - ≤ 1366px    = NOTEBOOK: tudo cabe, mas com menos espaço (menu mais estreito, 2 KPIs por linha).
+   - ≤ 1024px    = NOTEBOOK PEQUENO / TABLET DEITADO: colunas lado a lado viram uma só.
+   - ≤ 768px     = CELULAR: menu lateral vira gaveta (botão ☰), cabeçalho compacto, tabelas rolam de lado.
+   - ≤ 480px     = CELULAR PEQUENO: 1 KPI por linha, botões de largura total.
+   O botão ☰ funciona SEM JavaScript: é um <input type="checkbox"> escondido + <label>.             */
+
+/* Botão ☰ do menu (aparece só no celular) */
+.menu-toggle-check { position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none; }
+.menu-toggle {
+  display: none; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 10px; cursor: pointer; font-size: 22px;
+  color: var(--text-primary); background: var(--bg-hover); border: 1px solid var(--border);
+}
+.menu-fundo { display: none; }
+
+.header-school { min-width: 0; margin-right: auto; }
+.header-school > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.header-right, .menu-toggle { flex-shrink: 0; }
+.two-col > *, .dashboard-grid > *, .settings-cols > *, .reports-charts > *,
+.chat-layout > *, .form-grid-2 > *, .form-row > *, .search-bar input { min-width: 0; }
+.card:has(> table) { overflow-x: auto; }
+.paginacao { flex-wrap: wrap; }
+.tabela-scroll + .paginacao-linha:not(:empty) { margin-top: 12px; }
+.paginacao-linha { color: var(--text-secondary); font-size: 13px; }
+.filtros-postagens { margin-block: 12px; }
+.details-panel, .file-upload-box, .msg-bubble { overflow-wrap: anywhere; }
+
+/* ---------- MONITOR GRANDE (≥ 1600px): mais respiro, sem travar a largura ---------- */
+@media (min-width: 1600px) {
+  .content-area { padding: 36px 48px; }
+  .kpi-row, .stats-row, .dashboard-grid, .two-col { gap: 28px; }
+  .dashboard-grid { grid-template-columns: 2fr 1fr; }
+  .chat-layout { grid-template-columns: 320px 1fr; }
+  .card { padding: 28px; }
+}
+
+/* ---------- NOTEBOOK (≤ 1366px) ---------- */
+@media (max-width: 1366px) {
+  .sidebar { width: 230px; padding: 20px 12px; }
+  .content-area { padding: 24px; }
+  .kpi-row, .stats-row, .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+  .reports-charts { grid-template-columns: 1fr 1.4fr; }
+  .chat-layout { grid-template-columns: 260px 1fr; }
+}
+
+/* ---------- NOTEBOOK PEQUENO / TABLET (≤ 1024px) ---------- */
+@media (max-width: 1024px) {
+  .sidebar { width: 200px; }
+  .header { padding: 0 20px; }
+  .content-area { padding: 20px; }
+  .dashboard-grid, .two-col, .settings-cols, .reports-charts { grid-template-columns: minmax(0, 1fr); }
+  .perfil-topo, .perfil-grade { grid-template-columns: 1fr; }
+  .chat-layout { grid-template-columns: 220px 1fr; }
+  .details-panel { position: static; }
+  .header-school { font-size: 13px; }
+  .user-meta .role { display: none; }
+  .atencao { flex-wrap: wrap; }
+}
+
+/* ---------- CELULAR (≤ 768px) ---------- */
+@media (max-width: 768px) {
+  .app { flex-direction: column; }
+
+  /* menu lateral vira gaveta à esquerda */
+  .menu-toggle { display: inline-flex; }
+  .sidebar {
+    position: fixed; top: 0; left: 0; bottom: 0; z-index: 60;
+    width: 260px; max-width: 85vw; padding: 20px 16px;
+    border-right: 1px solid var(--border);
+    transform: translateX(-100%); transition: transform 0.25s ease;
+    overflow-y: auto; box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
+    visibility: hidden;
+  }
+  .menu-toggle-check:checked ~ .app .sidebar { transform: translateX(0); visibility: visible; }
+  .menu-toggle-check:focus-visible ~ .app .menu-toggle { outline: 2px solid currentColor; outline-offset: 2px; }
+  .menu-fundo { position: fixed; inset: 0; z-index: 55; background: rgba(0, 0, 0, 0.45); cursor: pointer; }
+  .menu-toggle-check:checked ~ .menu-fundo { display: block; }
+  .nav-items { flex-direction: column; }
+  .nav-item { white-space: nowrap; }
+
+  /* cabeçalho compacto */
+  .header { position: relative; height: auto; min-height: 56px; padding: 10px 14px; gap: 10px; }
+  .header-school { font-size: 13px; gap: 8px; }
+  .header-right { gap: 8px; }
+  .user-meta { display: none; }
+
+  .content-area { padding: 16px 14px; }
+  .greeting-title { font-size: 22px; }
+  .page-title { font-size: 20px; }
+
+  /* grade e cartões precisam poder encolher (senão a tabela "vaza" da tela) */
+  .two-col, .dashboard-grid, .settings-cols { min-width: 0; }
+  .two-col > *, .dashboard-grid > *, .card { min-width: 0; max-width: 100%; }
+  /* tabelas: rolam na horizontal dentro do cartão em vez de espremer as colunas */
+  .card:has(> table), .tabela-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .card > table, .tabela-scroll table { min-width: 560px; }
+  th, td { padding: 10px 8px; font-size: 13px; }
+
+  .chat-layout { grid-template-columns: minmax(0, 1fr); height: auto; }
+  .chat-col { min-height: 0; }
+  .chat-messages, #chat-mensagens, #conversa-mensagens { max-height: 50vh; }
+  .channel-list, .conv-list { max-height: 180px; overflow-y: auto; }
+
+  .form-grid-2, .form-row, .perfil-campos { grid-template-columns: minmax(0, 1fr); }
+  .filter-tabs { flex-wrap: wrap; }
+  .filters-bar, .search-bar { width: 100%; }
+  .page-title-row { flex-direction: column; align-items: stretch; }
+  .page-title-row .btn { width: 100%; justify-content: center; }
+  .acoes-tabela { flex-direction: column; }
+  .notif-wrap { position: static; }
+  .notif-painel { width: min(340px, calc(100vw - 28px)); right: 14px; top: calc(100% + 4px); max-height: min(420px, 65vh); }
+  .toast { max-width: calc(100vw - 32px); }
+
+  .login-card { padding: 24px 18px; }
+  .perfil-cabecalho { flex-direction: column; text-align: center; }
+  .perfil-avatar { align-self: center; flex: 0 0 auto; width: 84px; height: 84px; }
+  .perfil-cabecalho span { justify-content: center; }
+  .perfil-cabecalho > div { width: 100%; }
+}
+
+/* celular: campos com 16px evitam o zoom automático do iPhone; rodapé com espaço para os botões flutuantes */
+@media (max-width: 768px) {
+  input, select, textarea { font-size: 16px; }
+  .footer { padding-bottom: 72px; }
+  [vw-access-button] { bottom: 70px !important; }
+  .acess-opcoes { max-height: 60vh; overflow-y: auto; }
+}
+
+/* ---------- CELULAR PEQUENO (≤ 480px) ---------- */
+@media (max-width: 480px) {
+  .kpi-row, .stats-row, .metrics-grid { grid-template-columns: 1fr; }
+  .content-area { padding: 14px 10px; }
+  .card { padding: 16px; }
+  .btn, .btn-submit, .btn-tbl { width: 100%; justify-content: center; }
+  .header-divider { display: none; }
+  .kpi-value { font-size: 26px; }
+  .settings-section { padding: 16px; }
+  .toggle-row { flex-wrap: wrap; gap: 8px; }
+}
+
+/* ---------- Impressão (Exportar em PDF) ---------- */
+@media print {
+  .sidebar, .header, .footer, .menu-toggle, #btn-exportar, #toast-area, .notif-painel { display: none !important; }
+  .app { display: block; }
+  .content-area { padding: 0; }
+  .card { box-shadow: none; break-inside: avoid; }
+  body { background: #fff; }
+}

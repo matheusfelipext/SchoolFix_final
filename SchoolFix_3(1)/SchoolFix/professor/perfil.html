@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="SchoolFix — sistema de gestão de ocorrências escolares" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SchoolFix — Perfil · Portal do Professor</title>
+    <link rel="stylesheet" href="../recursos/icones/tabler-icons.min.css" />
+    <link rel="stylesheet" href="../css/fontes.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="../js/tema.js"></script>
+  </head>
+  <body>
+    <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+    <!-- Barra de acessibilidade (sem JavaScript: checkboxes + CSS) -->
+    <input type="checkbox" id="acess-fonte" class="acess-check" />
+    <input type="checkbox" id="acess-contraste" class="acess-check" />
+    <input type="checkbox" id="acess-espaco" class="acess-check" />
+    <input type="checkbox" id="acess-voz" class="acess-check" />
+    <details class="acess-menu">
+      <summary aria-label="Opções de acessibilidade" title="Acessibilidade"><i class="ti ti-accessible" aria-hidden="true"></i></summary>
+      <div class="acess-opcoes" role="group" aria-label="Ajustes de leitura">
+        <label for="acess-fonte"><i class="ti ti-text-increase" aria-hidden="true"></i> Letras maiores</label>
+        <label for="acess-contraste"><i class="ti ti-contrast" aria-hidden="true"></i> Alto contraste</label>
+        <label for="acess-espaco"><i class="ti ti-line-height" aria-hidden="true"></i> Mais espaço entre linhas</label>
+        <label for="acess-voz"><i class="ti ti-volume" aria-hidden="true"></i> Ler em voz alta (mouse/teclado)</label>
+        <button type="button" class="acess-ler-tudo" id="acess-ler-pagina"><i class="ti ti-player-play" aria-hidden="true"></i> Ler a página inteira</button>
+      </div>
+    </details>
+
+    <input type="checkbox" id="menu-aberto" class="menu-toggle-check" aria-label="Abrir menu" />
+    <div class="app">
+      <aside class="sidebar" aria-label="Barra lateral">
+        <div class="logo-wrap">
+          <img src="../imagens/logo.png" class="logo-img" alt="Logo SchoolFix" />
+          <span class="brand-name">SchoolFix</span>
+        </div>
+        <nav class="nav-items" aria-label="Menu principal">
+          <a class="nav-item" href="index.html"><i class="ti ti-home" aria-hidden="true"></i>Início</a>
+          <a class="nav-item" href="nova-reclamacao.html"><i class="ti ti-plus" aria-hidden="true"></i>Nova Postagem</a>
+          <a class="nav-item" href="minhas-reclamacoes.html"><i class="ti ti-list" aria-hidden="true"></i>Minhas Postagens</a>
+          <a class="nav-item" href="chat.html"><i class="ti ti-message-2" aria-hidden="true"></i>Chat Geral</a>
+          <a class="nav-item" href="fale-direcao.html"><i class="ti ti-mail" aria-hidden="true"></i>Fale com a Direção</a>
+          <a class="nav-item active" aria-current="page" href="perfil.html"><i class="ti ti-user" aria-hidden="true"></i>Perfil</a>
+          <a class="nav-item" href="configuracao.html"><i class="ti ti-settings" aria-hidden="true"></i>Configuração</a>
+        </nav>
+      </aside>
+
+      <div class="main">
+        <header class="header">
+          <label for="menu-aberto" class="menu-toggle" title="Menu">&#9776;</label>
+          <div class="header-school">
+            <i class="ti ti-school" aria-hidden="true"></i> <span>Centro Universitário Salesiano de São Paulo · Portal do Professor</span>
+          </div>
+          <div class="header-right">
+            <div class="notif-wrap">
+              <button type="button" class="icon-btn" id="notif-btn" title="Notificações" aria-label="Notificações">
+                <i class="ti ti-bell" aria-hidden="true"></i>
+                <span class="notif-badge" id="notif-badge" style="display:none">0</span>
+              </button>
+              <div class="notif-painel" id="notif-painel" style="display:none"></div>
+            </div>
+            <div class="header-divider"></div>
+            <div class="user-profile">
+              <div class="avatar" id="user-avatar">·</div>
+              <div class="user-meta">
+                <p class="name" id="user-nome">Carregando...</p>
+                <p class="role" id="user-role">—</p>
+              </div>
+              <button type="button" class="icon-btn btn-sair" title="Sair" onclick="logout()" style="margin-left: 8px"><i class="ti ti-logout" aria-hidden="true"></i> Sair</button>
+            </div>
+          </div>
+        </header>
+
+        <main class="content-area" id="conteudo">
+          <section class="view active">
+            <h1 class="page-title" style="margin-bottom: 4px">Perfil do Professor</h1>
+            <p class="greeting-sub">Visualize e edite suas informações pessoais e profissionais.</p>
+
+            <div class="perfil-topo">
+              <div class="card perfil-cabecalho">
+                <div class="perfil-avatar" data-usuario="inicial">·</div>
+                <div>
+                  <h2 class="perfil-nome" data-usuario="nome">—</h2>
+                  <span><i class="ti ti-hash" aria-hidden="true"></i> Matrícula: <strong style="font-weight:inherit" data-usuario="matricula">—</strong></span>
+                  <span><i class="ti ti-calendar" aria-hidden="true"></i> Data de nascimento: 15/03/1985</span>
+                  <span><i class="ti ti-mail" aria-hidden="true"></i> E-mail: <strong style="font-weight:inherit" data-usuario="email">—</strong></span>
+                </div>
+              </div>
+              <div class="card perfil-lateral">
+                <p class="perfil-lateral-titulo"><i class="ti ti-chalkboard" aria-hidden="true"></i> Área</p>
+                <p class="perfil-lateral-destaque">Engenharia de Software</p>
+                <p><i class="ti ti-map-pin" aria-hidden="true"></i> UNISAL – Centro Universitário Salesiano de São Paulo</p>
+                <p><i class="ti ti-clock" aria-hidden="true"></i> Desde 2019 · 20 h/semana</p>
+                <p>Situação: <span class="badge badge-ativo">Ativo</span></p>
+              </div>
+            </div>
+
+            <div class="perfil-grade">
+              <div class="card">
+                <h2 class="card-title"><i class="ti ti-user" aria-hidden="true"></i> Dados Pessoais</h2>
+                <hr class="divider" />
+                <div class="perfil-campos">
+                  <div class="perfil-campo"><span class="perfil-rotulo">Nome completo</span><span class="perfil-valor" data-usuario="nome">—</span></div>
+                  <div class="perfil-campo"><span class="perfil-rotulo">Nome social</span><span class="perfil-valor" data-extra="social">—</span></div>
+                  <div class="perfil-campo"><span class="perfil-rotulo">CPF</span><span class="perfil-valor">012.456.789-00</span></div>
+                  <div class="perfil-campo"><span class="perfil-rotulo">RG</span><span class="perfil-valor">40.673.521-2</span></div>
+                  <div class="perfil-campo"><span class="perfil-rotulo">Telefone</span><span class="perfil-valor" data-extra="telefone">(19) 98876-6422</span></div>
+                  <div class="perfil-campo"><span class="perfil-rotulo">E-mail alternativo</span><span class="perfil-valor" data-extra="email2">—</span></div>
+                  <div class="perfil-campo"><span class="perfil-rotulo">Endereço</span><span class="perfil-valor" data-extra="endereco">Rua das Flores, 22 – Jardim Enriquez, Campinas - SP CEP: 13000-120</span></div>
+                </div>
+                <a class="btn btn-outline perfil-botao" href="perfil-editar.html"><i class="ti ti-edit" aria-hidden="true"></i> Editar dados pessoais</a>
+              </div>
+              <div class="card">
+                <h2 class="card-title"><i class="ti ti-briefcase" aria-hidden="true"></i> Dados Profissionais</h2>
+                <hr class="divider" />
+                <div class="perfil-campos">
+                  <div class="perfil-campo"><span class="perfil-rotulo">Disciplinas</span><span class="perfil-valor">Programação Web · Banco de Dados</span></div>
+                  <div class="perfil-campo"><span class="perfil-rotulo">Situação</span><span class="perfil-valor"><span class="badge badge-ativo">Ativo</span></span></div>
+                  <div class="perfil-campo"><span class="perfil-rotulo">Departamento</span><span class="perfil-valor">Computação</span></div>
+                  <div class="perfil-campo"><span class="perfil-rotulo">Formação</span><span class="perfil-valor">Mestre em Ciência da Computação</span></div>
+                </div>
+                <a class="btn btn-outline perfil-botao" href="grade.html"><i class="ti ti-calendar-event" aria-hidden="true"></i> Ver grade de horários</a>
+              </div>
+            </div>
+          </section>
+        </main>
+        <footer class="footer" role="contentinfo">
+          © 2026 SchoolFix — Sistema de Gestão Escolar. Todos os direitos reservados.
+        </footer>
+      </div>
+    </div>
+    <label for="menu-aberto" class="menu-fundo" aria-hidden="true"></label>
+    <script src="../js/dados.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/perfil.js"></script>
+    <script src="../js/acessibilidade.js"></script>
+
+    <!-- VLibras (tradutor para Libras do governo federal) — precisa de internet; sem ela, fica invisível -->
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js" onerror="document.querySelector('[vw]')?.remove()"></script>
+    <script>if (window.VLibras) new window.VLibras.Widget("https://vlibras.gov.br/app");</script>
+  </body>
+</html>

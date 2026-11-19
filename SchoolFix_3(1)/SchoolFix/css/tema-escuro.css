@@ -1,0 +1,30 @@
+/* ============================================================
+   Modo escuro: ajustes de elementos que tinham cor fixa
+   ============================================================ */
+
+/* --- Modo escuro: elementos que estavam com cor fixa --- */
+html.dark-theme .login-card, html.dark-theme .login-card input { background: var(--bg-card); color: var(--text-primary); }
+html.dark-theme .card, html.dark-theme table, html.dark-theme .details-panel { background: var(--bg-card); color: var(--text-primary); }
+html.dark-theme input, html.dark-theme select, html.dark-theme textarea { background: var(--bg-card); color: var(--text-primary); border-color: var(--border-input); }
+html.dark-theme input::placeholder, html.dark-theme textarea::placeholder { color: var(--text-muted); }
+html.dark-theme th { background: var(--bg-hover); color: var(--text-secondary); }
+html.dark-theme tbody tr:hover td { background: var(--bg-hover); }
+html.dark-theme .sidebar { background: var(--bg-card); border-color: var(--border); }
+html.dark-theme .nav-item { color: var(--text-secondary); }
+html.dark-theme .nav-item.active, html.dark-theme .nav-item:hover { background: var(--primary-light-bg); color: var(--primary); }
+html.dark-theme .brand-name, html.dark-theme .greeting-title, html.dark-theme .card-title, html.dark-theme .page-title, html.dark-theme h1, html.dark-theme h2, html.dark-theme h3 { color: var(--text-primary); }
+html.dark-theme .footer { background: var(--bg-card); color: var(--text-muted); border-color: var(--border); }
+html.dark-theme .file-upload-box { background: var(--bg-hover); border-color: var(--border-input); color: var(--text-secondary); }
+html.dark-theme .notif-painel, html.dark-theme .toast { color: var(--text-primary); }
+html.dark-theme .form-control, html.dark-theme .search-bar input { background: var(--bg-card); color: var(--text-primary); }
+html.dark-theme .filter-tab { background: var(--bg-hover); color: var(--text-secondary); border-color: var(--border); }
+html.dark-theme .filter-tab.active { background: var(--primary); color: #fff; }
+html.dark-theme .channel-item, html.dark-theme .conv-item { color: var(--text-primary); }
+html.dark-theme .channel-item.active, html.dark-theme .conv-item.active { background: var(--bg-hover); }
+
+/* Ícones do menu lateral um pouco maiores */
+.nav-item i { font-size: 18px; }
+
+/* --- Cabeçalho: botão Sair com texto e sininho --- */
+.btn-sair { width: auto !important; padding: 0 12px !important; gap: 6px; font-size: 13px; font-weight: 600; }
+.notif-wrap { position: relative; }

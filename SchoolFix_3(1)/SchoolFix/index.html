@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="SchoolFix — sistema de gestão de ocorrências escolares" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SchoolFix — Entrar</title>
+    <link rel="stylesheet" href="recursos/icones/tabler-icons.min.css" />
+    <link rel="stylesheet" href="css/fontes.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/tema.js"></script>
+    <style>
+      body.login-page {
+        background: var(--bg-public);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+      .login-card {
+        width: 100%;
+        max-width: 380px;
+        background: var(--bg-card);
+        color: var(--text-primary);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border);
+        padding: 32px;
+      }
+      .login-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        margin-bottom: 24px;
+      }
+      .login-title {
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        color: var(--navy);
+        text-align: center;
+        margin: 0 0 4px;
+      }
+      .login-sub {
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: 13px;
+        margin: 0 0 24px;
+      }
+      .field {
+        margin-bottom: 16px;
+      }
+      .field label {
+        display: block;
+        color: var(--text-primary);
+        font-size: 13px;
+        font-weight: 500;
+        margin-bottom: 6px;
+      }
+      .field input {
+        width: 100%;
+        border: 1px solid var(--border-input);
+        border-radius: var(--radius);
+        padding: 11px 12px;
+        font-family: inherit;
+        font-size: 14px;
+        background: var(--bg-card);
+        color: var(--text-primary);
+      }
+      .field input::placeholder { color: var(--text-muted); }
+      .login-logo .brand-name { color: var(--navy); }
+      .login-erro {
+        background: var(--danger-bg);
+        color: var(--danger);
+        border-radius: var(--radius);
+        padding: 10px 12px;
+        font-size: 13px;
+        margin-bottom: 16px;
+        display: none;
+      }
+      .login-hint {
+        margin-top: 20px;
+        font-size: 12px;
+        color: var(--text-secondary);
+        text-align: center;
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  <body class="login-page" data-publica="true">
+    <!-- Barra de acessibilidade (sem JavaScript: checkboxes + CSS) -->
+    <input type="checkbox" id="acess-fonte" class="acess-check" />
+    <input type="checkbox" id="acess-contraste" class="acess-check" />
+    <input type="checkbox" id="acess-espaco" class="acess-check" />
+    <input type="checkbox" id="acess-voz" class="acess-check" />
+    <details class="acess-menu">
+      <summary aria-label="Opções de acessibilidade" title="Acessibilidade"><i class="ti ti-accessible" aria-hidden="true"></i></summary>
+      <div class="acess-opcoes" role="group" aria-label="Ajustes de leitura">
+        <label for="acess-fonte"><i class="ti ti-text-increase" aria-hidden="true"></i> Letras maiores</label>
+        <label for="acess-contraste"><i class="ti ti-contrast" aria-hidden="true"></i> Alto contraste</label>
+        <label for="acess-espaco"><i class="ti ti-line-height" aria-hidden="true"></i> Mais espaço entre linhas</label>
+        <label for="acess-voz"><i class="ti ti-volume" aria-hidden="true"></i> Ler em voz alta (mouse/teclado)</label>
+        <button type="button" class="acess-ler-tudo" id="acess-ler-pagina"><i class="ti ti-player-play" aria-hidden="true"></i> Ler a página inteira</button>
+      </div>
+    </details>
+
+    <main class="login-card">
+      <div class="login-logo">
+        <img src="imagens/logo.png" class="logo-img" alt="Logo SchoolFix" />
+        <span class="brand-name">SchoolFix</span>
+      </div>
+      <h1 class="login-title">Entrar na plataforma</h1>
+      <p class="login-sub">Acesse com seu e-mail institucional</p>
+
+      <div class="login-erro" id="login-erro" role="alert"></div>
+
+      <form id="login-form" aria-label="Formulário de login">
+        <div class="field">
+          <label for="email">E-mail ou matrícula (RA)</label>
+          <input
+            type="text"
+            id="email"
+            autocomplete="username"
+            required
+            placeholder="seu.email@escola.edu.br ou RA"
+          />
+        </div>
+        <div class="field">
+          <label for="senha">Senha</label>
+          <input type="password" id="senha" required placeholder="********" />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%">
+          Entrar
+        </button>
+      </form>
+
+      <p class="login-hint">
+        Contas de teste (senha <strong>123456</strong>):<br />
+        diretor@schoolfix.com · gestor.infra@schoolfix.com · professor@schoolfix.com · aluno@schoolfix.com<br />
+        ou pela matrícula: <strong>10001</strong> (diretor) · <strong>10045</strong> (professor) · <strong>20200123</strong> (aluno)
+      </p>
+    </main>
+    <script src="js/dados.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/acessibilidade.js"></script>
+    <script src="js/login.js"></script>
+
+    <!-- VLibras (tradutor para Libras do governo federal) — precisa de internet; sem ela, fica invisível -->
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js" onerror="document.querySelector('[vw]')?.remove()"></script>
+    <script>if (window.VLibras) new window.VLibras.Widget("https://vlibras.gov.br/app");</script>
+  </body>
+</html>

@@ -1,0 +1,268 @@
+/* ============================================================
+   Layout: estrutura da página, menu lateral, cabeçalho, rodapé, sininho
+   ============================================================ */
+
+/* ============================================
+   Layout Principal
+   ============================================ */
+.app {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background: var(--bg-card);
+  border-right: 1px solid var(--border);
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 8px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.logo-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text-primary);
+}
+
+.nav-items {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 14px;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  transition: all 0.15s ease;
+}
+
+.nav-item i {
+  font-size: 18px;
+  color: var(--text-muted);
+  transition: color 0.15s ease;
+}
+
+.nav-item:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.nav-item:hover i {
+  color: var(--text-primary);
+}
+
+.nav-item.active {
+  background: var(--primary-light-bg);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.nav-item.active i {
+  color: var(--primary);
+}
+
+/* Conteúdo Principal */
+.main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Cabeçalho Superior */
+.header {
+  height: 64px;
+  background: var(--header-bg);
+  color: var(--header-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border);
+  transition: background-color 0.2s ease;
+}
+
+.top-bar {
+  background-color: var(--navy-dark);
+  color: #ffffff;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+}
+
+.header-school {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--header-text);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.icon-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--header-text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.icon-btn i {
+  font-size: 18px;
+  color: currentColor;
+}
+
+.header-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--border);
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px var(--border);
+}
+
+.user-meta p {
+  margin: 0;
+  line-height: 1.3;
+}
+
+.user-meta .name {
+  font-weight: 600;
+  font-size: 13.5px;
+  color: var(--header-text);
+  max-width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-meta .role {
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+.content-area {
+  padding: 28px 32px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.view {
+  display: none;
+}
+
+.view.active {
+  display: block;
+}
+
+/* --- Header: sininho --- */
+.notif-wrap { position: relative; }
+.icon-btn { position: relative; }
+.icon-btn-primary { background: var(--primary) !important; color: #fff !important; }
+.notif-badge {
+  position: absolute; top: -4px; right: -4px;
+  min-width: 18px; height: 18px; padding: 0 5px;
+  border-radius: 999px; background: var(--danger); color: #fff;
+  font-size: 10px; font-weight: 700;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 2px solid var(--header-bg);
+}
+.notif-painel {
+  position: absolute; right: 0; top: calc(100% + 10px);
+  width: 340px; max-height: 420px; overflow-y: auto;
+  background: var(--bg-card); color: var(--text-primary);
+  border: 1px solid var(--border); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md); z-index: 50;
+}
+.notif-topo { display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-bottom: 1px solid var(--border); }
+.notif-topo .link-action { background: none; border: none; cursor: pointer; font-size: 12px; font-family: inherit; }
+.notif-item { padding: 10px 14px; border-bottom: 1px solid var(--border); cursor: pointer; display: flex; flex-direction: column; gap: 2px; }
+.notif-item:hover { background: var(--bg-hover); }
+.notif-item.nao-lida { background: var(--primary-light-bg); }
+.notif-item.nao-lida .notif-titulo { font-weight: 600; }
+.notif-titulo { font-size: 13px; }
+.notif-data { font-size: 11px; color: var(--text-muted); }
+.notif-vazio { padding: 16px; font-size: 13px; color: var(--text-muted); text-align: center; }
+
+/* --- Logo do projeto (sidebar e login) --- */
+.logo-img { width: 36px; height: 36px; border-radius: 8px; object-fit: cover; }
+.login-logo .logo-img { width: 56px; height: 56px; }

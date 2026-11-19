@@ -1,0 +1,136 @@
+/* ============================================================
+   Reset, tipografia e utilitários
+   ============================================================ */
+
+/* ============================================
+   Reset Global e Tipografia
+   ============================================ */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 1.5;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4,
+.brand-name,
+.greeting-title {
+  font-family: "Poppins", "Inter", sans-serif;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-input);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* --- Utilitários --- */
+.text-muted { color: var(--text-muted); font-weight: 400; }
+.page-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.page-title-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+.filters-bar { margin-bottom: 16px; }
+.td-vazio { text-align: center; color: var(--text-muted); padding: 20px !important; font-size: 13px; }
+.tabela-scroll { width: 100%; overflow-x: auto; }
+.linha-clicavel { cursor: pointer; }
+.linha-clicavel:hover td, .linha-selecionada td { background: var(--bg-hover); }
+.linha-inativa td { opacity: 0.55; }
+.acoes-tabela { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.avatar-tabela { width: 34px; height: 34px; font-size: 13px; }
+.exclusive-badge {
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--role-diretoria-bg);
+  color: var(--role-diretoria);
+  vertical-align: middle;
+}
+
+/* --- Semântica: elementos só para leitores de tela / rodapé de tabela --- */
+.visualmente-oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.tabela-rodape { text-align: left; font-size: 13px; color: var(--text-secondary); padding: 12px 16px; }
+h1.greeting-title, h1.page-title, h1.settings-title, h2.card-title { margin-top: 0; }
+.form-header h1 { font-family: "Poppins", sans-serif; font-size: 1.4rem; color: var(--text-primary); margin: 0 0 6px; }
+
+
+/* ============================================================
+   ACESSIBILIDADE
+   ============================================================ */
+/* foco visível por teclado e link "pular para o conteúdo" */
+:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; border-radius: 4px; }
+.pular-conteudo { position: absolute; left: -9999px; top: 8px; z-index: 100; background: var(--primary); color: #fff; padding: 8px 14px; border-radius: 8px; }
+.pular-conteudo:focus { left: 8px; }
+
+/* barra ♿ flutuante — funciona sem JavaScript (checkboxes escondidos + CSS) */
+.acess-check { position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none; }
+.acess-menu { position: fixed; right: 16px; bottom: 16px; z-index: 90; }
+.acess-menu { width: 48px; height: 48px; }
+.acess-menu summary { list-style: none; cursor: pointer; width: 48px !important; height: 48px !important; min-width: 0; max-width: 48px; padding: 0; box-sizing: border-box; border-radius: 50%; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); }
+.acess-menu summary::-webkit-details-marker { display: none; }
+.acess-menu summary i { font-size: 24px; line-height: 1; }
+.acess-opcoes { position: absolute; right: 0; bottom: 56px; width: 250px; padding: 8px; background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25); }
+.acess-opcoes label { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; cursor: pointer; font-size: 14px; user-select: none; }
+.acess-opcoes label:hover { background: var(--bg-hover); }
+.acess-opcoes label::after { content: ""; margin-left: auto; width: 18px; height: 18px; border-radius: 4px; border: 2px solid var(--border-input); }
+#acess-fonte:checked ~ .acess-menu label[for="acess-fonte"]::after,
+#acess-contraste:checked ~ .acess-menu label[for="acess-contraste"]::after,
+#acess-espaco:checked ~ .acess-menu label[for="acess-espaco"]::after,
+#acess-voz:checked ~ .acess-menu label[for="acess-voz"]::after { background: var(--primary); border-color: var(--primary); }
+.acess-ler-tudo { display: flex; align-items: center; gap: 10px; width: 100%; margin-top: 4px; padding: 10px 12px; border: none; border-radius: 8px; background: var(--primary); color: #fff; font: inherit; font-size: 14px; cursor: pointer; }
+.acess-ler-tudo.ativo { background: var(--danger); }
+
+/* efeitos no site */
+#acess-fonte:checked ~ .app, #acess-fonte:checked ~ .login-card { zoom: 1.2; }
+#acess-contraste:checked ~ .app, #acess-contraste:checked ~ .login-card { filter: contrast(1.35) saturate(1.1); }
+#acess-contraste:checked ~ .app a:not(.btn):not(.nav-item):not(.btn-tbl) { text-decoration: underline; }
+#acess-espaco:checked ~ .app, #acess-espaco:checked ~ .login-card { line-height: 1.9; letter-spacing: 0.02em; word-spacing: 0.08em; }
+
+/* preferências do sistema operacional */
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; } }
+@media (prefers-contrast: more) { .app { filter: contrast(1.25); } }
+@media (max-width: 768px) { .acess-menu { right: 12px; bottom: 12px; } .acess-opcoes { width: calc(100vw - 48px); max-width: 280px; } }
+.u-mt-8 { margin-top: 8px; display: inline-flex; align-items: center; gap: 6px; }
+
+/* VLibras: botão na lateral direita, acima da barra ♿ */
+[vw-access-button] { bottom: 80px !important; top: auto !important; }
+@media print { [vw], .acess-menu { display: none !important; } }

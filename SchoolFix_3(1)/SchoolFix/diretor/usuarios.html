@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="SchoolFix — sistema de gestão de ocorrências escolares" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SchoolFix — Usuários | Diretoria</title>
+    <link rel="stylesheet" href="../recursos/icones/tabler-icons.min.css" />
+    <link rel="stylesheet" href="../css/fontes.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="../js/tema.js"></script>
+    <style>
+      #btn-novo-usuario{
+        margin: 10px;
+      }
+      #busca-usuarios{
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+    <!-- Barra de acessibilidade (sem JavaScript: checkboxes + CSS) -->
+    <input type="checkbox" id="acess-fonte" class="acess-check" />
+    <input type="checkbox" id="acess-contraste" class="acess-check" />
+    <input type="checkbox" id="acess-espaco" class="acess-check" />
+    <input type="checkbox" id="acess-voz" class="acess-check" />
+    <details class="acess-menu">
+      <summary aria-label="Opções de acessibilidade" title="Acessibilidade"><i class="ti ti-accessible" aria-hidden="true"></i></summary>
+      <div class="acess-opcoes" role="group" aria-label="Ajustes de leitura">
+        <label for="acess-fonte"><i class="ti ti-text-increase" aria-hidden="true"></i> Letras maiores</label>
+        <label for="acess-contraste"><i class="ti ti-contrast" aria-hidden="true"></i> Alto contraste</label>
+        <label for="acess-espaco"><i class="ti ti-line-height" aria-hidden="true"></i> Mais espaço entre linhas</label>
+        <label for="acess-voz"><i class="ti ti-volume" aria-hidden="true"></i> Ler em voz alta (mouse/teclado)</label>
+        <button type="button" class="acess-ler-tudo" id="acess-ler-pagina"><i class="ti ti-player-play" aria-hidden="true"></i> Ler a página inteira</button>
+      </div>
+    </details>
+
+    <input type="checkbox" id="menu-aberto" class="menu-toggle-check" aria-label="Abrir menu" />
+    <div class="app">
+      <aside class="sidebar" aria-label="Barra lateral">
+        <div class="logo-wrap">
+          <img src="../imagens/logo.png" class="logo-img" alt="Logo SchoolFix" />
+          <span class="brand-name">SchoolFix</span>
+        </div>
+        <nav class="nav-items" aria-label="Menu principal">
+          <a class="nav-item active" aria-current="page" href="index.html"
+            ><i class="ti ti-home" aria-hidden="true"></i>Início</a
+          >
+          <a class="nav-item" href="reclamacoes.html"
+            ><i class="ti ti-list" aria-hidden="true"></i>Todas Reclamações</a
+          >
+          <a
+            href="nova-ocorrencia.html"
+            class="nav-item btn-nova-ocorrencia-sidebar"
+          >
+            <i class="ti ti-plus" aria-hidden="true"></i>Nova Ocorrência
+          </a>
+          <a class="nav-item" href="chat.html"
+            ><i class="ti ti-message-2" aria-hidden="true"></i>Chat Geral</a
+          >
+          <a class="nav-item" href="mensagens.html"
+            ><i class="ti ti-mail" aria-hidden="true"></i>Mensagens Diretas</a
+          >
+          <a class="nav-item" href="relatorios.html"
+            ><i class="ti ti-chart-bar" aria-hidden="true"></i>Relatórios</a
+          >
+          <a class="nav-item" href="usuarios.html"
+            ><i class="ti ti-user" aria-hidden="true"></i>Usuários</a
+          >
+          <a class="nav-item" href="configuracoes.html"
+            ><i class="ti ti-settings" aria-hidden="true"></i>Configurações</a
+          >
+        </nav>
+      </aside>
+
+      <div class="main">
+        <header class="header">
+          <label for="menu-aberto" class="menu-toggle" title="Menu">&#9776;</label>
+          <div class="header-school">
+            <i class="ti ti-school" aria-hidden="true"></i> Centro Universitário Salesiano de São
+            Paulo
+          </div>
+          <div class="header-right">
+            <div class="notif-wrap">
+              <button type="button" class="icon-btn" id="notif-btn" title="Notificações" aria-label="Notificações">
+                <i class="ti ti-bell" aria-hidden="true"></i>
+                <span class="notif-badge" id="notif-badge" style="display:none">0</span>
+              </button>
+              <div class="notif-painel" id="notif-painel" style="display:none"></div>
+            </div>
+            <div class="header-divider"></div>
+            <div class="user-profile">
+              <div class="avatar">M</div>
+              <div class="user-meta">
+                <p class="name" id="user-nome">Carregando...</p>
+                <p class="role" id="user-role">—</p>
+              </div>
+              <button
+                class="icon-btn"
+                title="Sair"
+                onclick="logout()"
+                style="margin-left: 8px"
+              >
+                <i class="ti ti-logout" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <main class="content-area" id="conteudo">
+          <section class="view active" id="view-usuarios">
+            <div class="page-title-row">
+              <h1 class="page-title">
+                Gestão de Usuários
+                <span class="exclusive-badge">Exclusivo Diretoria</span>
+              </h1>
+              <button class="btn btn-primary" id="btn-novo-usuario">
+                <i class="ti ti-plus" style="vertical-align: -2px"></i>
+                Adicionar Usuário
+              </button>
+            </div>
+
+            <!-- Painel de cadastro/edição — some/aparece com o botão acima ou o lápis da tabela -->
+            <div
+              class="card"
+              id="form-usuario"
+              style="display: none; margin-bottom: 16px"
+            >
+              <p
+                class="card-title"
+                id="form-usuario-titulo"
+                style="margin-bottom: 16px"
+              >
+                Novo Usuário
+              </p>
+              <input type="hidden" id="usuario-id" />
+              <div class="settings-cols">
+                <div class="field">
+                  <label>Nome</label><input id="usuario-nome" />
+                </div>
+                <div class="field">
+                  <label>E-mail</label><input id="usuario-email" type="email" />
+                </div>
+                <div class="field">
+                  <label>Matrícula / RA <small class="text-muted">(opcional — serve para entrar no lugar do e-mail)</small></label><input id="usuario-matricula" type="text" inputmode="numeric" />
+                </div>
+                <div class="field">
+                  <label>Senha (deixe em branco pra não trocar)</label
+                  ><input id="usuario-senha" type="password" />
+                </div>
+                <div class="field">
+                  <label>Cargo</label>
+                  <select id="usuario-perfil">
+                    <option value="aluno">Aluno</option>
+                    <option value="professor">Professor</option>
+                    <option value="gestor">Gestor</option>
+                    <option value="coordenador">Coordenador</option>
+                    <option value="diretor">Diretor</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="user-status">Status Inicial</label>
+                  <select id="user-status" class="form-control">
+                    <option value="Ativo" selected>Ativo</option>
+                    <option value="Inativo">Inativo</option>
+                  </select>
+                </div>
+              </div>
+              <div style="display: flex; gap: 12px; margin-top: 8px">
+                <button class="btn btn-primary" id="btn-salvar-usuario">
+                  Salvar
+                </button>
+                <button class="btn btn-outline" id="btn-cancelar-usuario">
+                  Cancelar
+                </button>
+              </div>
+            </div>
+
+            <div class="filters-bar">
+              <div class="search-bar">
+                <i class="ti ti-search"></i
+                ><input
+                  id="busca-usuarios"
+                  placeholder="Buscar usuário por nome, email ou cargo..."
+                />
+              </div>
+            </div>
+            <div class="card" style="padding: 16px">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Avatar</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Cargo</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Ações</th>
+                  </tr>
+                </thead>
+                <tbody id="tabela-usuarios">
+                  <tr>
+                    <td
+                      colspan="6"
+                      style="
+                        text-align: center;
+                        color: var(--text-secondary);
+                        padding: 20px;
+                      "
+                    >
+                      Carregando...
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </main>
+        <footer class="footer" role="contentinfo">
+          © 2026 SchoolFix — Sistema de Gestão Escolar. Todos os direitos
+          reservados.
+        </footer>
+      </div>
+    </div>
+    <label for="menu-aberto" class="menu-fundo" aria-hidden="true"></label>
+
+    <script src="../js/dados.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/acessibilidade.js"></script>
+    <script src="../js/usuarios.js"></script>
+
+    <!-- VLibras (tradutor para Libras do governo federal) — precisa de internet; sem ela, fica invisível -->
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js" onerror="document.querySelector('[vw]')?.remove()"></script>
+    <script>if (window.VLibras) new window.VLibras.Widget("https://vlibras.gov.br/app");</script>
+  </body>
+</html>
